@@ -1,3 +1,7 @@
+// Load env variables
+require('dotenv').config();
+
+// Require modules
 const path = require('path');
 const express = require('express');
 const compression = require('compression');
@@ -23,7 +27,10 @@ app.use(express.json());
 app.use(helmet({
   contentSecurityPolicy: false,
 }));
-app.engine('handlebars', engine());
+app.engine('handlebars', engine({
+  defaultLayout: false,
+}));
+
 app.set('view engine', 'handlebars');
 app.set('views', path.resolve(__dirname, '../views'));
 
