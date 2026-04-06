@@ -1,6 +1,8 @@
 // Load env variables
 require('dotenv').config();
 
+
+
 // Require modules
 const path = require('path');
 const express = require('express');
@@ -9,6 +11,8 @@ const favicon = require('serve-favicon');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const { engine } = require('express-handlebars');
+
+const session = require('express-session');
 
 const router = require('./router.js');
 
@@ -24,6 +28,12 @@ app.use(favicon(path.resolve(__dirname, '../hosted/img/favicon.png')));
 app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(session({
+  key: 'sessionid',
+  secret: 'Domo Maker',
+  resave: false,
+  saveUninitialized: false,
+}));
 app.use(helmet({
   contentSecurityPolicy: false,
 }));

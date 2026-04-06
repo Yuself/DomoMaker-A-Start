@@ -19,9 +19,19 @@
     </form>
   </section>
   
-  <section id="domos">
-
-  </section>
+<section id="domos">
+  {{#if domos.length}}
+    {{#each domos}}
+      <div class="domo">
+        <img class="domoFace" src="/assets/img/face.png" alt="domo face"/>
+        <h3 class="domoName">Name: {{name}}</h3>
+        <h3 class="domoAge">Age: {{age}}</h3>
+      </div>
+    {{/each}}
+  {{else}}
+    <h3 class="emptyDomo">No Domos yet</h3>
+  {{/if}}
+</section>
   
   <div id="domoMessage" class='hidden'>
     <img id="speech" src="/assets/img/speech.png" alt="speech box"/>

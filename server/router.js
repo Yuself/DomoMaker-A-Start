@@ -11,6 +11,9 @@ const router = (app) => {
 
   app.get('/maker', controllers.Domo.makerPage);
 
+  //demo b
+  app.post('/maker', controllers.Domo.makeDomo);
+
   app.get('/', controllers.Account.loginPage);
 };
 
